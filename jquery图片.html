@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>锋利的jquery第三章案例</title>
+	<style>
+	*{
+    margin:0;
+    padding:0;
+  }
+  .pic{
+    display:inline-block;
+    border:1px solid black;
+    padding:5px;
+  }
+  .showPic{
+    display:none;
+    position:absolute;
+    width:280px;
+    height:auto;
+    border:1px solid #999;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    padding:5px;
+  
+  }
+
+	</style>
+	<script src='jquery-3.1.0.min.js'></script>
+	<script>
+	$(document).ready(function(){
+    var x=50;
+    var y=50;
+    $('img').mouseover(function(e){
+      var tiPic="<img class='showPic' src="+this.src+" />"
+      $('body').append(tiPic);
+      $('.showPic').css({
+        'left':e.pageX+x+'px',
+        'top':e.pageY+y+'px'
+      }).show();
+    }).mouseout(function(){
+      $('.showPic').hide();
+    }).mousemove(function(e){
+      $('.showPic').css({
+        'left':e.pageX+x+'px',
+        'top':e.pageY+y+'px'
+      })
+    })
+  })
+     
+	</script>
+</head>
+<body>
+	<img class='pic' src='zjj2.png' />
+  <img class='pic' src='zjj3.png' />
+  <img class='pic' src='zjj5.png' />
+  <img class='pic' src='zjj6.png' />
+   
+</body>
+</html>

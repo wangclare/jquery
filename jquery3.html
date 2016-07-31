@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>锋利的jquery第三章案例</title>
+	<style>
+	*{
+    margin:0;
+    padding:0;
+  }
+  .tips{
+    display:none;
+  	border:1px solid yellow;
+  	background:#999;
+  	color:white;
+  	width:85px;
+  	position:absolute;
+  	-webkit-border-radius:8px;
+  	-moz-border-radius:8px;
+  	border-radius:8px;
+  }
+  .mName{
+  	text-decoration:none;
+  }
+  .div1{
+  	width:260px;
+  }
+	</style>
+	<script src='jquery-3.1.0.min.js'></script>
+	<script>
+	$(document).ready(function(){
+      var x=5;
+      var y=5;
+		$('.mName').mouseover(function(e){   
+      this.oTitle=this.title;    
+      //this.oTitle的作用域的问题
+			var tipsB="<div class='tips'>"+this.title+"</div>";
+           $('body').append(tipsB);
+           $('.tips').css({
+                'left':e.pageX+x+'px',
+                'top' :e.pageY+y+'px'
+           }).show();
+           this.title='';
+		}).mouseout(function(){
+          $('.tips').remove();
+          this.title=this.oTitle;
+    }).mousemove(function(e){   
+      //this.oTitle的作用域的问题
+      //var tipsB="<div class='tips'>"+this.title+"</div>";
+          // $('body').append(tipsB);
+          //这里不需要再次创建div添加到body里，因为mouseover的时候
+          //新创建的div元素已经存在
+           $('.tips').css({
+                'left':e.pageX+x+'px',
+                'top' :e.pageY+y+'px'
+           }).show();
+           this.title='';
+    })
+	})
+     
+	</script>
+</head>
+<body>
+	<div class='div1'>
+         <a href='javascript:,' class='mName' title='what is this?'><h1>My name is Clare!</h1></a>
+    </div>
+   
+</body>
+</html>
