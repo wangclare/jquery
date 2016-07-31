@@ -31,10 +31,8 @@
 	</style>
 	<script src='jquery-3.1.0.min.js'></script>
 	<script>
-	$(document).ready(function(){
-    var x=50;
-    var y=50;
-    $('img').mouseover(function(e){
+	$(document).ready(function(){ 
+    $('img').mouseover(function(){
       var tiPic="<img class='showPic' src="+this.src+" />"
       $('body').append(tiPic);
       $('.showPic').show();
